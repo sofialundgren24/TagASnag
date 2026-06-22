@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Item {
+  id        String   @id @default(uuid())
+  userId    String // Här kopplar vi senare till Clerk
+  name      String
+  data      Json // Här sparar du nisch-datan (växt, jobb, fisk etc.)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
